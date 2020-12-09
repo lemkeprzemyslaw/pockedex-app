@@ -1,0 +1,35 @@
+:host {
+  background-color: #DFE3E3;
+
+  &:hover {
+    background-color: #34A9CC;
+  }
+}
+
+.item-wrapper {
+  padding: 10px;
+  text-decoration: none;
+  color: #535050;
+  display: flex;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.description {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+}
+
+.image {
+  max-width: 40%;
+}
+
+.active {
+  background-color: #2A8BBF;
+}
