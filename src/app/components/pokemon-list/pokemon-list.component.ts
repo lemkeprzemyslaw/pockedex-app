@@ -1,60 +1,30 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CardsService} from '../../services';
-import {pluck, tap} from 'rxjs/operators';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {CardsDataService, ApiService} from '../../services';
 import {Subscription} from 'rxjs';
-
-interface Card {
-  id: string;
-  name: string;
-  nationalPokedexNumber: number;
-  imageUrl: string;
-  imageUrlHiRes: string;
-  types: string[];
-  supertype: string;
-  subtype: string;
-  evolvesFrom: string;
-  hp: string;
-  retreatCost: string[];
-  number: string;
-  artist: string;
-  rarity: string;
-  series: string;
-  set: string;
-  setCode: string;
-  attacks: {
-    cost: string[],
-    name: string,
-    text: string,
-    damage: string,
-    convertedEnergyCost: number
-  }[];
-}
-
-interface Cards {
-  cards: Card[];
-}
+import {Card} from '../../models';
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.sass']
+  styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit, OnDestroy {
   cards: Card[];
   subscription: Subscription;
 
-  constructor(private cardsService: CardsService) { }
+  constructor(private cardsService: ApiService, private cardsData: CardsDataService) {
+  }
 
   ngOnInit(): void {
-    this.subscription = this.cardsService.getAllCards().subscribe((response: Cards) => {
-      this.cards = response.cards
+    this.subscription = this.cardsService.getAllCards().subscribe((response: Card[]) => {
+      this.cards = response
         .sort((a, b) => a.nationalPokedexNumber - b.nationalPokedexNumber);
-      console.log(this.cards);
+      this.cardsData.saveData(this.cards);
+      console.log(this.cardsData.cardsData);
     });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

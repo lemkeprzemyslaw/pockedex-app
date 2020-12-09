@@ -1,1 +1,16 @@
-<p>pokemon-details works!</p>
+<div class="details-container">
+  <img src="{{ card.imageUrl }}" alt="{{ card.name }}">
+  <div class="description-wrapper">
+    <h3>{{ card.name }} {{ card.subtype === 'Basic' ? '' : '| ' + card.subtype }}</h3>
+    <p>Types: {{ card.types }}</p>
+    <p>HP: {{ card.hp }}</p>
+    <p>Rarity: {{ card.rarity }}</p>
+    <div *ngFor="let attack of card.attacks">
+      <p>attack name: {{ attack.name }} <br>
+        damage: {{ attack.damage }} <br>
+        {{ attack.text }} <br>
+        cost: {{ attack.cost }} <br>
+        converted energy cost: {{ attack.convertedEnergyCost }}</p>
+    </div>
+  </div>
+</div>

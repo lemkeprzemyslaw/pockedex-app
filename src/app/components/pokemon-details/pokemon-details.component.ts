@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {map, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Card} from '../../models';
+import {CardsDataService, ApiService} from '../../services';
 
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
-  styleUrls: ['./pokemon-details.component.sass']
+  styleUrls: ['./pokemon-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PokemonDetailsComponent implements OnInit {
-  id: string;
+  cards: Card[];
+  id: any;
+  card: Card;
 
-  constructor(private route: ActivatedRoute) {
-    this.id = this.route.snapshot.paramMap.get('id');
+  constructor(private route: ActivatedRoute, private cardsService: ApiService, private cardsData: CardsDataService) {
+    route.params.subscribe(({ id }) => {
+      this.card = cardsData.findCard(id);
+      console.log(this.card);
+    });
   }
 
   ngOnInit(): void {
-    console.log(this.id);
+
   }
 
 }
