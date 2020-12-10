@@ -1,22 +1,24 @@
 <div class="details-container" *ngIf="this.cardId">
   <img src="{{ card.imageUrl }}" alt="{{ card.name }}">
   <div class="description-wrapper">
-    <div class="name-wrapper">
+    <div class="name-container">
       <h2>{{ card.name }} {{ card.subtype === 'Basic' ? '' : '| ' + card.subtype }}</h2>
       <button class="btn" (click)="editMode(true)">
         <img class="edit-icon" src="./assets/images/edit_icon.png" alt="edit">
       </button>
     </div>
-    <p>Types: {{ card.types }}</p>
-    <p>HP: {{ card.hp }}</p>
-    <p>Rarity: {{ card.rarity }}</p>
-    <div *ngFor="let attack of card.attacks">
-      <p>attack name: {{ attack.name }} <br>
-        damage: {{ attack.damage }} <br>
-        {{ attack.text }} <br>
-        cost: {{ attack.cost }} <br>
-        converted energy cost: {{ attack.convertedEnergyCost }}</p>
+    <p><span class="bold">Types: </span>{{ card.types }}</p>
+    <p><span class="bold">HP: </span>{{ card.hp }}</p>
+    <p><span class="bold">Rarity: </span>{{ card.rarity }}</p>
+    <div *ngFor="let attack of card.attacks" class="attack-wrapper">
+      <p><span class="bold">Attack name: </span>{{ attack.name }}</p>
+      <ul>
+        <li *ngIf="attack.damage">damage: {{ attack.damage }}</li>
+        <li *ngIf="attack.text">{{ attack.text }}</li>
+        <li *ngIf="attack.cost">cost: {{ attack.cost }}</li>
+        <li *ngIf="attack.convertedEnergyCost">converted energy cost: {{ attack.convertedEnergyCost }}</li>
+      </ul>
     </div>
   </div>
 </div>
-<div *ngIf="!this.cardId"><h2>Wybierz pokemona z listy</h2></div>
+<div *ngIf="!this.cardId"><h2>Choose your Pokemon</h2></div>

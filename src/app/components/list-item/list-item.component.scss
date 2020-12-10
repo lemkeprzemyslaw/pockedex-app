@@ -12,6 +12,7 @@
   color: #535050;
   display: flex;
   transition: transform 0.2s;
+  align-items: center;
 
   &:hover {
     transform: scale(1.05);

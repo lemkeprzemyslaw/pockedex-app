@@ -1,26 +1,21 @@
 <div class="container">
-  <div>
-    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
-      <h1>Edytor statystyk</h1>
-      <label>
-        Nazwa:
-        <input type="text" formControlName="name" value="card.name">
-      </label>
-      <label>
-        HP:
-        <input type="text" formControlName="hp" value="card.hp">
-      </label>
-      <label>
-        Typ:
-        <input type="text" formControlName="hp" value="card.hp">
-      </label>
-      <label>
-        Żadkość:
-        <input type="text" formControlName="rarity" value="card.rarity">
-      </label>
-
+  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="form">
+    <h1>Edit Pokemon details</h1>
+    <label>
+      Name:
+      <input type="text" formControlName="name" value="card.name">
+    </label>
+    <label>
+      HP:
+      <input type="text" formControlName="hp" value="card.hp">
+    </label>
+    <label>
+      Rarity:
+      <input type="text" formControlName="rarity" value="card.rarity">
+    </label>
+    <div class="btn-container">
       <button type="submit" class="btn btn-success">Submit</button>
-      <button type="button" class="btn btn-default" (click)="editMode(false);">Anuluj</button>
-    </form>
-  </div>
+      <button type="button" class="btn btn-default" (click)="editMode(false);">Cancel</button>
+    </div>
+  </form>
 </div>

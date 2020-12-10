@@ -7,7 +7,6 @@ import {Card} from '../models';
 export class CardsDataService {
   cardsData: Card[] = [];
 
-  constructor() { }
   saveData(data: Card[]): void {
     this.cardsData.push(...data);
   }

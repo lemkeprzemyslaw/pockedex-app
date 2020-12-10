@@ -12,13 +12,9 @@ export class EditFormComponent implements OnInit {
   @Input() card: Card;
   @Output() edit = new EventEmitter<boolean>();
   @Output() sendData = new EventEmitter<object>();
-  cardForm;
-
-  constructor() { }
+  cardForm: FormGroup;
 
   onSubmit(): void {
-    console.log(this.cardForm.value);
-    console.log('submit');
     this.editMode(false);
     this.sendData.emit(this.cardForm.value);
   }
@@ -28,13 +24,10 @@ export class EditFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.card);
     this.cardForm = new FormGroup({
       name: new FormControl(this.card.name),
       hp: new FormControl(this.card.hp),
-      types: new FormControl(this.card.types),
       rarity: new FormControl(this.card.rarity),
     });
   }
-
 }

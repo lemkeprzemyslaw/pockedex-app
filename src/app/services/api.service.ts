@@ -17,8 +17,4 @@ export class ApiService {
         map((cards: Card[]) => cards.sort((a, b) => a.nationalPokedexNumber - b.nationalPokedexNumber))
       );
   }
-
-  getSpecificCard(id): Observable<object> {
-    return this.http.get(`https://api.pokemontcg.io/v1/cards/${id}`);
-  }
 }
