@@ -14,16 +14,16 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   cards: Card[];
   subscription: Subscription;
   card: Card;
-  editMode: boolean;
+  editMode = false;
 
-  constructor(private route: ActivatedRoute, private cardsService: ApiService, private cardsData: CardsDataService) {
+  constructor(private route: ActivatedRoute, private cardsService: ApiService, private dataService: CardsDataService) {
   }
 
   ngOnInit(): void {
     this.subscription = this.cardsService.getAllCards().subscribe((response: Card[]) => {
       this.cards = response
         .sort((a, b) => a.nationalPokedexNumber - b.nationalPokedexNumber);
-      this.cardsData.saveData(this.cards);
+      this.dataService.saveData(this.cards);
     });
   }
 
@@ -33,10 +33,16 @@ export class PokemonListComponent implements OnInit, OnDestroy {
 
   updateChoosenCard(cardId: string): void {
     this.cardId = cardId;
-    this.card = this.cardsData.findCard(cardId);
+    this.card = this.dataService.findCard(cardId);
   }
 
-  showEditForm(): void {
-    this.editMode = true;
+  showEditForm(editMode): void {
+    this.editMode = editMode;
+  }
+
+  updateCard(updatedData: object): void {
+    this.card = {...this.card, ...updatedData};
+    this.dataService.updateCard(updatedData, this.card.id);
+    this.cards = this.dataService.cardsData;
   }
 }

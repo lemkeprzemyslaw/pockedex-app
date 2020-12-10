@@ -1,0 +1,26 @@
+<div class="container">
+  <div>
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+      <h1>Edytor statystyk</h1>
+      <label>
+        Nazwa:
+        <input type="text" formControlName="name" value="card.name">
+      </label>
+      <label>
+        HP:
+        <input type="text" formControlName="hp" value="card.hp">
+      </label>
+      <label>
+        Typ:
+        <input type="text" formControlName="hp" value="card.hp">
+      </label>
+      <label>
+        Żadkość:
+        <input type="text" formControlName="rarity" value="card.rarity">
+      </label>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-default" (click)="editMode(false);">Anuluj</button>
+    </form>
+  </div>
+</div>

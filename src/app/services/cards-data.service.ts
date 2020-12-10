@@ -19,4 +19,9 @@ export class CardsDataService {
 
     return this.cardsData.find(({ id }) => cardId === id);
   }
+
+  updateCard(updatedData: object, cardId: string): void {
+    const cardIndex = this.cardsData.findIndex(({ id }) => cardId === id);
+    this.cardsData[cardIndex] = {...this.cardsData[cardIndex], ...updatedData};
+  }
 }

@@ -5,5 +5,5 @@
     </div>
   </div>
 </div>
-<app-pokemon-details [cardId]="cardId" [card]="card" (edit)="showEditForm()"></app-pokemon-details>
-<app-edit-form *ngIf="editMode" [card]="card"></app-edit-form>
+<app-pokemon-details [cardId]="cardId" [card]="card" (edit)="showEditForm($event)"></app-pokemon-details>
+<app-edit-form *ngIf="editMode" [card]="card" (edit)="showEditForm($event)" (sendData)="updateCard($event)"></app-edit-form>

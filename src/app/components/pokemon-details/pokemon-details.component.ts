@@ -12,7 +12,7 @@ export class PokemonDetailsComponent {
   @Input() cardId: string;
   @Output() edit = new EventEmitter<boolean>();
 
-  editMode(): void {
-    this.edit.emit();
+  editMode(isEditMode): void {
+    this.edit.emit(isEditMode);
   }
 }

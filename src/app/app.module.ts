@@ -7,7 +7,8 @@ import {PokemonListComponent} from './components/pokemon-list/pokemon-list.compo
 import {HttpClientModule} from '@angular/common/http';
 import {PokemonDetailsComponent} from './components/pokemon-details/pokemon-details.component';
 import {ListItemComponent} from './components/list-item/list-item.component';
-import { EditFormComponent } from './components/edit-form/edit-form.component';
+import {EditFormComponent} from './components/edit-form/edit-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
