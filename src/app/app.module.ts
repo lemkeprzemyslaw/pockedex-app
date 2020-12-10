@@ -7,6 +7,7 @@ import {PokemonListComponent} from './components/pokemon-list/pokemon-list.compo
 import {HttpClientModule} from '@angular/common/http';
 import {PokemonDetailsComponent} from './components/pokemon-details/pokemon-details.component';
 import {ListItemComponent} from './components/list-item/list-item.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {ListItemComponent} from './components/list-item/list-item.component';
     PokemonListComponent,
     ListItemComponent,
     PokemonDetailsComponent,
+    EditFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CardsDataService, ApiService} from '../../services';
+import {ApiService, CardsDataService} from '../../services';
 import {Subscription} from 'rxjs';
 import {Card} from '../../models';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,10 +10,13 @@ import {Card} from '../../models';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit, OnDestroy {
+  cardId: string = null;
   cards: Card[];
   subscription: Subscription;
+  card: Card;
+  editMode: boolean;
 
-  constructor(private cardsService: ApiService, private cardsData: CardsDataService) {
+  constructor(private route: ActivatedRoute, private cardsService: ApiService, private cardsData: CardsDataService) {
   }
 
   ngOnInit(): void {
@@ -20,11 +24,19 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       this.cards = response
         .sort((a, b) => a.nationalPokedexNumber - b.nationalPokedexNumber);
       this.cardsData.saveData(this.cards);
-      console.log(this.cardsData.cardsData);
     });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  updateChoosenCard(cardId: string): void {
+    this.cardId = cardId;
+    this.card = this.cardsData.findCard(cardId);
+  }
+
+  showEditForm(): void {
+    this.editMode = true;
   }
 }

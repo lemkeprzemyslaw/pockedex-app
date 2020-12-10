@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {Card} from '../../models';
+import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-list-item',
@@ -8,4 +9,9 @@ import {Card} from '../../models';
 })
 export class ListItemComponent {
   @Input() card: Card;
+  @Output() cardChooseEvent = new EventEmitter<string>();
+
+  chooseCard(cardId: string): void {
+    this.cardChooseEvent.emit(cardId);
+  }
 }

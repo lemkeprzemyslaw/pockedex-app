@@ -1,7 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Card} from '../../models';
-import {CardsDataService, ApiService} from '../../services';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -9,20 +7,12 @@ import {CardsDataService, ApiService} from '../../services';
   styleUrls: ['./pokemon-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PokemonDetailsComponent implements OnInit {
-  cards: Card[];
-  id: string;
-  card: Card;
+export class PokemonDetailsComponent {
+  @Input() card: Card;
+  @Input() cardId: string;
+  @Output() edit = new EventEmitter<boolean>();
 
-  constructor(private route: ActivatedRoute, private cardsService: ApiService, private cardsData: CardsDataService) {
-    route.params.subscribe(({ id }) => {
-      this.card = cardsData.findCard(id);
-      console.log(this.card);
-    });
+  editMode(): void {
+    this.edit.emit();
   }
-
-  ngOnInit(): void {
-
-  }
-
 }

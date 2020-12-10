@@ -1,11 +1,16 @@
-<div class="details-container">
-  <img src="{{ card.imageUrl }}" alt="{{ card.name }}">
+<div class="details-container" *ngIf="this.cardId">
+  <img src="{{ card?.imageUrl }}" alt="{{ card?.name }}">
   <div class="description-wrapper">
-    <h3>{{ card.name }} {{ card.subtype === 'Basic' ? '' : '| ' + card.subtype }}</h3>
-    <p>Types: {{ card.types }}</p>
-    <p>HP: {{ card.hp }}</p>
-    <p>Rarity: {{ card.rarity }}</p>
-    <div *ngFor="let attack of card.attacks">
+    <div class="name-wrapper">
+      <h2>{{ card?.name }} {{ card?.subtype === 'Basic' ? '' : '| ' + card?.subtype }}</h2>
+      <button class="btn" (click)="editMode(true)">
+        <img class="edit-icon" src="./assets/images/edit_icon.png" alt="edit">
+      </button>
+    </div>
+    <p>Types: {{ card?.types }}</p>
+    <p>HP: {{ card?.hp }}</p>
+    <p>Rarity: {{ card?.rarity }}</p>
+    <div *ngFor="let attack of card?.attacks">
       <p>attack name: {{ attack.name }} <br>
         damage: {{ attack.damage }} <br>
         {{ attack.text }} <br>
@@ -14,3 +19,4 @@
     </div>
   </div>
 </div>
+<div *ngIf="!this.cardId"><h2>Wybierz pokemona z listy</h2></div>

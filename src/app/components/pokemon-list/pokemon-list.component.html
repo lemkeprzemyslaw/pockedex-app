@@ -1,5 +1,9 @@
-<div class="nav-list">
-  <div *ngFor="let card of cards">
-    <app-list-item [card]="card"></app-list-item>
+<div class="nav-list-wrapper">
+  <div class="nav-list">
+    <div *ngFor="let card of cards">
+      <app-list-item [card]="card" (cardChooseEvent)="updateChoosenCard($event)"></app-list-item>
+    </div>
   </div>
 </div>
+<app-pokemon-details [cardId]="cardId" [card]="card" (edit)="showEditForm()"></app-pokemon-details>
+<app-edit-form *ngIf="editMode" [card]="card"></app-edit-form>
