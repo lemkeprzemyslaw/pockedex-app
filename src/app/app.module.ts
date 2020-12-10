@@ -13,7 +13,7 @@ import {ListItemComponent} from './components/list-item/list-item.component';
     AppComponent,
     PokemonListComponent,
     ListItemComponent,
-    PokemonDetailsComponent
+    PokemonDetailsComponent,
   ],
   imports: [
     BrowserModule,

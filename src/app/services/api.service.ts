@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
@@ -16,5 +16,9 @@ export class ApiService {
         pluck('cards'),
         map((cards: Card[]) => cards.sort((a, b) => a.nationalPokedexNumber - b.nationalPokedexNumber))
       );
+  }
+
+  getSpecificCard(id): Observable<object> {
+    return this.http.get(`https://api.pokemontcg.io/v1/cards/${id}`);
   }
 }

@@ -11,7 +11,7 @@ import {CardsDataService, ApiService} from '../../services';
 })
 export class PokemonDetailsComponent implements OnInit {
   cards: Card[];
-  id: any;
+  id: string;
   card: Card;
 
   constructor(private route: ActivatedRoute, private cardsService: ApiService, private cardsData: CardsDataService) {
