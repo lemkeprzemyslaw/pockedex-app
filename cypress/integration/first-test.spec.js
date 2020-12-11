@@ -2,7 +2,7 @@ describe("First test", () => {
   it("should open pokemon card", () => {
     cy.visit("http://localhost:4200");
     cy.get(':nth-child(2) > app-list-item > .item-wrapper').click();
-    cy.url().should('include', '/card')
+    cy.contains('h2', 'Ivysaur');
   });
 
   it("should open pokemon card", () => {
