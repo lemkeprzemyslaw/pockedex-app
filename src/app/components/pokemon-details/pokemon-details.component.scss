@@ -1,6 +1,6 @@
 :host {
-  font-family: 'Open Sans';
-  margin-left: 30vw;
+  font-family: 'Roboto';
+  margin-left: 38vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -43,6 +43,7 @@ img {
 .name-container {
   display: flex;
   align-items: center;
+  color: #3f51b5;
 
   h2 {
     margin: 0;
