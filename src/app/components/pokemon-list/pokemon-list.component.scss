@@ -1,17 +1,16 @@
-:host {
-  .nav-list-wrapper {
-    position: sticky;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0;
-  }
-  .nav-list {
-    position: fixed;
-    height: 100%;
-    width: 290px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-top: 64px;
-  }
+.nav-list-wrapper {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+}
+
+.nav-list {
+  position: fixed;
+  height: 100%;
+  width: 290px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 64px;
 }
