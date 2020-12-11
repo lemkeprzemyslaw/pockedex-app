@@ -1,7 +1,7 @@
 <div class="nav-list-wrapper">
   <div class="nav-list">
     <div *ngFor="let card of cards">
-      <app-list-item [card]="card" (cardChooseEvent)="updateChoosenCard($event)"></app-list-item>
+      <app-list-item [active]="card.id === cardId" [card]="card" (cardChooseEvent)="updateChoosenCard($event)"></app-list-item>
     </div>
   </div>
 </div>

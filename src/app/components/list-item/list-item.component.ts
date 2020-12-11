@@ -10,6 +10,7 @@ import {EventEmitter} from '@angular/core';
 })
 export class ListItemComponent {
   @Input() card: Card;
+  @Input() active: boolean;
   @Output() cardChooseEvent = new EventEmitter<string>();
 
   chooseCard(cardId: string): void {

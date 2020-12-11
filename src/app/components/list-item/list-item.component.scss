@@ -1,8 +1,9 @@
 :host {
   background-color: #DFE3E3;
 
-  &:hover {
-    background-color: #34A9CC;
+  .active:hover {
+    background: rgba(63,81,181,.19);
+    color: #3f51b5;
   }
 }
 
